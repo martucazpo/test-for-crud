@@ -6,8 +6,10 @@ const app = express();
 const mongoose = require('mongoose');
 const PORT = process.env.PORT;
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile('index');
 });
 
 mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
