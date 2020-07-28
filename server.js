@@ -4,22 +4,22 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const { urlencoded } = require('express');
+const expressLayouts = require('express-ejs-layouts');
 const PORT = process.env.PORT;
 
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.set('layout', 'layouts/page');
 
 app.use(express.urlencoded({
     extended: false
   }));
 app.use(express.json());
 app.use(express.static('public'));
+app.use(expressLayouts);
 
 app.get('/', (req, res) => {
-    res.sendFile('index');
-});
-
-app.get('/catimage', (req, res) => {
-    res.sendFile(__dirname + '/public/other-page.html');
+    res.render('layouts/form');
 });
 
 app.post('/catimage', (req, res) => {
@@ -28,7 +28,7 @@ app.post('/catimage', (req, res) => {
     let data = [];
     data.push(name, age);
     console.log(data);
-    res.json(data);
+    res.render('layouts/other-page', {name : data[0], age: data[1]});
 });
 
 mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
