@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
     res.sendFile('index');
 });
 
+app.get('/catimage', (req, res) => {
+    res.sendFile(__dirname + '/public/other-page.html');
+});
+
 mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
