@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const expressLayouts = require('express-ejs-layouts');
 const PORT = process.env.PORT;
+const CatFancier = require('./models/CatFancier');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -25,10 +26,21 @@ app.get('/', (req, res) => {
 app.post('/catimage', (req, res) => {
     let name = req.body.name;
     let age = req.body.age;
-    let data = [];
-    data.push(name, age);
-    console.log(data);
-    res.render('layouts/other-page', {name : data[0], age: data[1]});
+    let catFancier = new CatFancier({ name, age });
+    catFancier.save((err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            let name = data.name;
+            let age = data.age;
+            let id = data._id;
+            res.render('layouts/other-page', {
+                name,
+                age,
+                id 
+            });
+        }
+    });
 });
 
 mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
