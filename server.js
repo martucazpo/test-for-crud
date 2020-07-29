@@ -6,7 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const expressLayouts = require('express-ejs-layouts');
 const PORT = process.env.PORT;
-const CatFancier = require('./models/CatFancier');
+const routes = require('./routes/index');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -18,44 +18,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(express.static('public'));
 app.use(expressLayouts);
-
-app.get('/', (req, res) => {
-    res.render('layouts/form');
-});
-
-app.post('/catimage', (req, res) => {
-    let name = req.body.name;
-    let age = req.body.age;
-    let catFancier = new CatFancier({ name, age });
-    catFancier.save((err, data) => {
-        if (err) {
-            console.log(err);
-        } else {
-            let name = data.name;
-            let age = data.age;
-            let id = data._id;
-            res.render('layouts/other-page', {
-                name,
-                age,
-                id 
-            });
-        }
-    });
-});
-
-app.get('/third-page/:id', (req, res) => {
-    let id = req.params.id;
-    CatFancier.findById({ _id : id }, (err, data) => {
-        if (err){
-            console.log(err);
-        }else{
-            let name = data.name;
-            let age = data.age;
-            let id = data._id;
-            res.json({ name, age, id });
-        }
-    });
-});
+app.use(routes);
 
 mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
         useNewUrlParser: true,
