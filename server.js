@@ -43,6 +43,20 @@ app.post('/catimage', (req, res) => {
     });
 });
 
+app.get('/third-page/:id', (req, res) => {
+    let id = req.params.id;
+    CatFancier.findById({ _id : id }, (err, data) => {
+        if (err){
+            console.log(err);
+        }else{
+            let name = data.name;
+            let age = data.age;
+            let id = data._id;
+            res.json({ name, age, id });
+        }
+    });
+});
+
 mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
