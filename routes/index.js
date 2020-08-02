@@ -27,18 +27,27 @@ router.post('/catimage', (req, res) => {
 });
 
 router.post('/third-page/:id', (req, res) => {
-    console.log(req.body.src);
+    let src = req.body.src;
     let id = req.params.id;
-    CatFancier.findById({ _id : id }, (err, data) => {
-        if (err){
+    CatFancier.findByIdAndUpdate({ _id : id}, { $set: { favoriteCatImg : src } }, { new: true }, (err, data) => {
+        if (err) {
             console.log(err);
-        }else{
-            let name = data.name;
-            let age = data.age;
-            let id = data._id;
-            res.json({ name, age, id });
+        } else {
+            let id = data.id;
+            CatFancier.findById({ _id : id }, (err, data) => {
+                if (err){
+                    console.log(err);
+                }else{
+                    let name = data.name;
+                    let age = data.age;
+                    let fci = data.favoriteCatImg;
+                    let id = data._id;
+                    res.json({ name, age, fci, id });
+                }
+            });
         }
     });
+    
 });
 
 
