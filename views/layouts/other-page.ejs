@@ -1,8 +1,5 @@
 <div class="cat-container">
-<h1 id="catTitle" data-name="<%= name %>">Hello, <%= name %>, here are your cat pics!</h1>
-<h2 id="catAge" data-age="<%= age %>" >This cat is three. Our records show that you are <%= age %> years old, <%= name %>!</h2>
-<br/>
-<br/>
-<h3>Click me!</h3>
-<a href="/third-page/<%= id %>"><img src="assets/images/justaintright.gif" /></a>
+<h1 id="catTitle" data-name="<%= name %>">Hello, <%= name %>, which is your favorite cat picture?</h1>
+<h2 id="catAge" data-age="<%= age %>">Please click on your favorite!</h2>
+<%- include('../partials/cat-img-form.ejs') %>
 </div>

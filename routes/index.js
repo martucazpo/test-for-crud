@@ -26,7 +26,8 @@ router.post('/catimage', (req, res) => {
     });
 });
 
-router.get('/third-page/:id', (req, res) => {
+router.post('/third-page/:id', (req, res) => {
+    console.log(req.body.src);
     let id = req.params.id;
     CatFancier.findById({ _id : id }, (err, data) => {
         if (err){

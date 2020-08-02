@@ -11,6 +11,10 @@ const CatFancierSchema = new mongoose.Schema({
         type: Number,
         required: true,
         trim: true
+    },
+    favoriteCatImg: {
+        type: String,
+        trim: true
     }
 });
 

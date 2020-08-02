@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+img {
+    height: 200px;
+    width: auto;
+}
+
 .form-container {
     background-color: red;
     height: 100vh;
@@ -14,4 +19,9 @@
     background-color: cyan;
     height: 100vh;
     width: 100vw;
+}
+
+.cat-image-div {
+    display: flex;
+    cursor: pointer;
 }
