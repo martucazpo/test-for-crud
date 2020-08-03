@@ -42,7 +42,7 @@ router.post('/third-page/:id', (req, res) => {
                     let age = data.age;
                     let fci = data.favoriteCatImg;
                     let id = data._id;
-                    res.json({ name, age, fci, id });
+                    res.render('layouts/third-page', { name, age, fci, id });
                 }
             });
         }

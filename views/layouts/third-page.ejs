@@ -1,0 +1,18 @@
+<h1>Hey, <%= name %>, here is the information we have on you. Let me know if this is correct!</h1>
+
+<div>
+<p>Your name is <%= name %>.</p> <button type='button' onClick="window.location.href='/update/name/<%= id %>'">edit</button>
+</div>
+<div>
+<p>You are <%= age %> years old.</p> <button type='button' onClick="window.location.href='/update/age/<%= id %>'">edit</button>
+</div>
+<div>
+<p>Your favorite cat pic is</p> 
+<img src="<%= fci %>"/> <button type='button' onClick="window.location.href='/update/fci/<%= id %>'">edit</button>
+</div>
+<div>
+<button type="button"  value="<%= id %>" onClick="window.location.href= '/restOfSite'">Yes, that's me!</button>
+</div>
+<div>
+<button type="button" value="<%= id %>" onClick="window.location.href= '/delete/<%= id %>'">That's weird, please delete my profile</button>
+</div>
