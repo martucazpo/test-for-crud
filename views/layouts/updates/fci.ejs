@@ -1,0 +1,21 @@
+<div id="fciContainer" class="fci-container">
+<div>
+<h1>If this is not your favorite cat picture</h1>
+<img src="<%= fci %>" />
+<h2>Please pick another image!</h2>
+</div>
+<div class="cat-image-div">
+<form action="/third-page/<%= id %>" method="POST">
+<input type="hidden" name="src" value="/assets/images/disgusting.gif"/>
+<button type="submit"><img src="../../assets/images/disgusting.gif" /></button>
+</form>
+<form action="/third-page/<%= id %>" method="POST">
+<input type="hidden" name="src" value="/assets/images/justGross.gif"/>
+<button type="submit"><img src="../../assets/images/justGross.gif" /></button>
+</form>
+<form action="/third-page/<%= id %>" method="POST">
+<input type="hidden" name="src" value="/assets/images/justaintright.gif"/>
+<button type="submit"><img src="../../assets/images/justaintright.gif" /></button>
+</form>
+</div>
+</div>

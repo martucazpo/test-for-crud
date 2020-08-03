@@ -7,8 +7,9 @@ router.get('/name/:id', (req, res) => {
         if (err) {
             console.log(err);
         } else {
+            let id = data._id;
             let name = data.name;
-            res.json({ name });
+            res.render('layouts/updates/name.ejs', { name, id });
         }
     });
 });
@@ -19,8 +20,9 @@ router.get('/age/:id', (req, res) => {
         if (err) {
             console.log(err);
         } else {
+            let id = data._id
             let age = data.age;
-            res.json({ age });
+            res.render('layouts/updates/age.ejs', { age, id });
         }
     });
 });
@@ -31,8 +33,9 @@ router.get('/fci/:id', (req, res) => {
         if (err) {
             console.log(err);
         } else {
+            let id = data._id;
             let fci = data.favoriteCatImg;
-            res.json({ fci });
+            res.render('layouts/updates/fci.ejs', { fci, id });
         }
     });
 });

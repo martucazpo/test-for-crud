@@ -1,0 +1,11 @@
+<div id="nameContainer" class="name-container">
+<h1>We have your name on file as <%= name %></h1>.
+<h2>We're sorry that we got it wrong!</h2>
+<h3>How would you like to be called?</h3>
+<div>
+<form action="/update/name/<%= id %>" method="POST">
+<input type="text" name="name" placeholder="What is your name?" />
+<button type="submit">Change Name</button> 
+</form>
+</div>
+</div> 

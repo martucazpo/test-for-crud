@@ -1,0 +1,11 @@
+<div id="ageContainer" class="age-container">
+<h1>We have your age on file as <%= age %></h1>.
+<h2>Maybe you've gotten older?</h2>
+<h3>How old are you?</h3>
+<div>
+<form action="/update/age/<%= id %>" method="POST">
+<input type="number" name="age" placeholder="What is your age?" />
+<button type="submit">Change age</button> 
+</form>
+</div>
+</div>
