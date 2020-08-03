@@ -7,7 +7,11 @@ router.post('/', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.json({ data });
+            let name = data.name;
+            let age = data.age;
+            let id = data.id;
+            let fci = data.favoriteCatImg;
+            res.render('layouts/site/rest-of-site.ejs', { name, id, age, fci });
         }
     });
 });
