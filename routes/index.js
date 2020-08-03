@@ -54,5 +54,16 @@ router.post('/third-page/:id', (req, res) => {
     
 });
 
+router.get('/delete/:id', (req, res) => {
+    let id = req.params.id;
+    CatFancier.findByIdAndRemove({ _id: id }, (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json({ "CatFancier Removed from Database" : data });
+        }
+    });
+});
+
 
 module.exports = router;
