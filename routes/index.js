@@ -60,7 +60,8 @@ router.get('/delete/:id', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.json({ "CatFancier Removed from Database" : data });
+            let name = data.name;
+            res.render('layouts/delete.ejs', { name });
         }
     });
 });
