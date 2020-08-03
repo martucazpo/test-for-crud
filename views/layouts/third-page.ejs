@@ -11,7 +11,10 @@
 <img src="<%= fci %>"/> <button type='button' onClick="window.location.href='/update/fci/<%= id %>'">edit</button>
 </div>
 <div>
-<button type="button"  value="<%= id %>" onClick="window.location.href= '/restOfSite'">Yes, that's me!</button>
+<form action ="/restOfSite" method="POST">
+<input type="hidden" name="id" value="<%= id %>" />
+<button type="submit">Yes, that's me!</button>
+</form>
 </div>
 <div>
 <button type="button" value="<%= id %>" onClick="window.location.href= '/delete/<%= id %>'">That's weird, please delete my profile</button>

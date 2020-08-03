@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const updateRoutes = require('./update');
+const siteRoutes = require('./site');
 const CatFancier = require('../models/CatFancier');
 
 router.use('/update', updateRoutes);
+router.use('/restOfSite', siteRoutes);
 
 router.get('/', (req, res) => {
     res.render('layouts/form');
